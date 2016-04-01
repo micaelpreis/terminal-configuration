@@ -23,7 +23,7 @@ To do so, just follow these easy steps below.
 
 ### 1. Edit Terminal Preferences
 
-First, start by openning **Terminal**, go to Preferences and perform this changes:
+First, start by opening **Terminal**, go to Preferences and perform this changes:
 
 * In General, set Homebrew as your default profile on startup;
 * In Profiles, click on Homebrew and set him as default;
@@ -161,3 +161,51 @@ To add them to your prompt just paste them into your PS1, like this:
 	export PS1="(\$(date +%H:%M)) $B_GREEN\u@:$B_BLUE\w $B_BLUE\$$B_WHITE"
 
 ### 7. Understanding Prompt Configuration
+
+##### Change Terminal Colors
+
+If you want to change the colors of your Terminal, you need to change the LSCOLORS variable. 
+
+LSCOLORS sets colors for the following attributes:
+
+1. Directory
+2. Symbolic link
+3. Socket
+4. Pipe
+5. Executable
+6. Block special
+7. Character Special
+8. Executable with etuid bit set
+9. Executable with setgid bit set
+10. Directory writable to others, with sticky bit
+11. Directory writable to others, without sticky
+
+The configuration sets the background and foreground colors of this attributes in their order. For instance the following example defines the background color of directories as cyan, and foreground color as black.
+
+> gafxcxdxbxegedabagacad
+
+The list of colors is presented below:
+
+> a - black
+> b - red
+> c - green
+> d - brown
+> e - blue
+> f - magenta
+> g - cyan
+> h - light grey
+> A - bold black, usually shows up as dark grey
+> B - bold red
+> C - bold green
+> D - bold brown, usually shows up as yellow
+> E - bold blue
+> F - bold magenta
+> G - bold cyan
+> H - bold light grey; looks like bright white
+> x - default foreground or background
+
+---
+
+##### Change Prompt
+
+
