@@ -75,6 +75,8 @@ Paste the following commands on the file.
 
 Now when you start a new window, you will have a beautiful and intuitive Terminal.
 
+**Note:** If you want to change the way prompt is configured, you can check the step 7 of this tutorial.
+
 ### 4. Shortcuts
 
 Adding shortcuts is something relatively simple and easy to do. They follow a simple pattern:
@@ -96,14 +98,66 @@ Here are some of my shortcuts that I find really helpful. Just paste them on you
 	alias gs='git status'				# Git Status
 	alias gss='git status --short'		# Git Status (short way)
 	alias ga='git add .'				# Git Add
-	alias gc='git commit -m'			# Git Commit
-	alias gp='git push origin'			# Git Push
-	alias gl='git log --decorate -2' 	# Git Log (you can still change the number os logs to show in terminal)
-	alias gls='git shortlog -2' 		# Git ShortLog (you can still change the number os logs to show in terminal)
+	alias gc='git commit -m'			# Git Commit (you still need to write the commit message in front of the command) (ex: 'gc "commit message"')
+	alias gp='git push origin'			# Git Push (you still need to write the branch in front of the command) (ex: 'gp development')
+	alias gl='git log --decorate -2' 	# Git Log (you can still change the number of logs to show) (ex: 'gl -5')
+	alias gls='git shortlog -2' 		# Git ShortLog (you can still change the number of logs to show) (ex: 'gls -5')
 
 Other thing that I find really useful is to set up shortcuts for all my projects. For instance, for this specific project I created a shortcut that takes me directly to the project home folder. 
 
-	#PROJECTS SHORTCUTS
-	alias tc='cd ~/Documents/Projects/terminal_configuration' 	# Go To My Terminal Configuration Project Folder
+	# PROJECTS SHORTCUTS
+	alias tc='cd ~/Documents/Projects/terminal_configuration' 		# Go To Project 'Terminal Configuration'
 
 This way I don't take a long time writing the path to the folder, since I just need to type a simple keyword.
+
+### 5. Git Integration
+
+### 6. Other Configurations
+
+##### Sublime Text
+
+In order for you to be able to open files in sublime directly from you Terminal with the command 'subl', or with the ones that I added in step 4, you have to do two things.
+
+First paste this line on your bash_profile file.
+
+	export PATH=/usr/local/bin:$PATH
+
+Then run the corresponding command on your Terminal and the Sublime Text shortcut will be set.
+
+Sublime Text 2: 
+	
+	ln -s /Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
+
+Sublime Text 3: 
+	
+	ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/subl
+
+Now you can open files with Sublime Text on your Terminal.
+
+---
+
+##### Add Date and Time To Prompt
+
+Below, four different configurations of date and time are listed, in case you want to add one of them of create your own to your prompt.
+
+> (2016/04/01 10:21:30)
+	
+	(\$(date +%Y/%m/%d) \$(date +%H:%M:%S))
+
+> (01/04/16) (10:21:30)
+	
+	(\$(date +%d/%m/%y)) (\$(date +%H:%M:%S))
+
+> (01/04/2016)
+
+	(\$(date +%d/%m/%Y))
+
+> (10:21)
+
+	(\$(date +%H:%M))
+
+To add them to your prompt just paste them into your PS1, like this:
+
+	export PS1="(\$(date +%H:%M)) $B_GREEN\u@:$B_BLUE\w $B_BLUE\$$B_WHITE"
+
+### 7. Understanding Prompt Configuration
