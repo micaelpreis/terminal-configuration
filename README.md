@@ -75,7 +75,7 @@ Paste the following commands on the file.
 
 Now when you start a new window, you will have a beautiful and intuitive Terminal.
 
-**Note:** If you want to change the way prompt is configured, you can check the step 7 of this tutorial.
+**Note:** If you want to change the way prompt is configured or the colors of your terminal, you can check the step 7 of this tutorial.
 
 ### 4. Shortcuts
 
@@ -111,6 +111,8 @@ Other thing that I find really useful is to set up shortcuts for all my projects
 This way I don't take a long time writing the path to the folder, since I just need to type a simple keyword.
 
 ### 5. Git Integration
+
+
 
 ### 6. Other Configurations
 
@@ -160,7 +162,7 @@ To add them to your prompt just paste them into your PS1, like this:
 
 	export PS1="(\$(date +%H:%M)) $B_GREEN\u@:$B_BLUE\w $B_BLUE\$$B_WHITE"
 
-### 7. Understanding Prompt Configuration
+### 7. Understanding Terminal Configuration
 
 ##### Change Terminal Colors
 
@@ -186,23 +188,23 @@ The configuration sets the background and foreground colors of this attributes i
 
 The list of colors is presented below:
 
-> a - black
-> b - red
-> c - green
-> d - brown
-> e - blue
-> f - magenta
-> g - cyan
-> h - light grey
-> A - bold black, usually shows up as dark grey
-> B - bold red
-> C - bold green
-> D - bold brown, usually shows up as yellow
-> E - bold blue
-> F - bold magenta
-> G - bold cyan
-> H - bold light grey; looks like bright white
-> x - default foreground or background
+> a - black  
+> b - red  
+> c - green  
+> d - brown  
+> e - blue  
+> f - magenta  
+> g - cyan  
+> h - light grey  
+> A - bold black, usually shows up as dark grey  
+> B - bold red  
+> C - bold green  
+> D - bold brown, usually shows up as yellow  
+> E - bold blue  
+> F - bold magenta  
+> G - bold cyan  
+> H - bold light grey; looks like bright white  
+> x - default foreground or background  
 
 ---
 
@@ -232,15 +234,15 @@ This will set your name as green and everything else as white.
 
 **Note:** Before you start changing your prompt, there are a couple of special characters that you should know:
 
-> \h - the hostname up to the first `.'
-> \H - the hostname
-> \n - newline
-> \u - the username of the current user
-> \w - the current working directory
-> \W - the basename of the current working directory
-> \$ - if the effective UID is 0, a #, otherwise a $
-> \\\ - a backslash
-> \\[ - begin a sequence of non-printing characters, which could be used to embed a terminal control sequence into the prompt
-> \\] - end a sequence of non-printing characters
+> \h - the hostname up to the first `.'  
+> \H - the hostname  
+> \n - newline  
+> \u - the username of the current user  
+> \w - the current working directory  
+> \W - the basename of the current working directory  
+> \$ - if the effective UID is 0, a #, otherwise a $  
+> \\\ - a backslash  
+> \\[ - begin a sequence of non-printing characters, which could be used to embed a terminal control sequence into the prompt  
+> \\] - end a sequence of non-printing characters  
 
 This list is not complete. If you want a more complete list, you need to search for it.
