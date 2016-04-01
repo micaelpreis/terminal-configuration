@@ -164,7 +164,7 @@ To add them to your prompt just paste them into your PS1, like this:
 
 ##### Change Terminal Colors
 
-If you want to change the colors of your Terminal, you need to change the LSCOLORS variable. 
+If you want to change the colors of your Terminal, you need to change the LSCOLORS variable on your bash_profile file. 
 
 LSCOLORS sets colors for the following attributes:
 
@@ -208,4 +208,39 @@ The list of colors is presented below:
 
 ##### Change Prompt
 
+If you want to change the prompt of your Terminal, you need to change the variable PS1 on your bash_profile file.
 
+Below, three different prompt presentations are presented, so that you can have an idea how they are created:
+
+> user@:~/Documents/Projects $
+	
+	export PS1="\u@:\w \$"
+
+> user@:Projects $
+
+	export PS1="\u@:\w \$"
+
+> [Users-MacBook-Pro@~/Documents: ] $
+	
+	export PS1="[\h@\w: ] $"
+
+If you want to add color, simply add the color variable before the area in the prompt that you want to change. So, if you wanted everything to be default except your name, you could do it like this:
+
+	export PS1="$B_GREEN\u$B_WHITE@:\w \$"
+
+This will set your name as green and everything else as white.
+
+**Note:** Before you start changing your prompt, there are a couple of special characters that you should know:
+
+> \h - the hostname up to the first `.'
+> \H - the hostname
+> \n - newline
+> \u - the username of the current user
+> \w - the current working directory
+> \W - the basename of the current working directory
+> \$ - if the effective UID is 0, a #, otherwise a $
+> \\\ - a backslash
+> \\[ - begin a sequence of non-printing characters, which could be used to embed a terminal control sequence into the prompt
+> \\] - end a sequence of non-printing characters
+
+This list is not complete. If you want a more complete list, you need to search for it.
