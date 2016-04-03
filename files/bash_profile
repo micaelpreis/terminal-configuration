@@ -1,8 +1,11 @@
-# ----------------------------
-#   1.  PATHS CONFIGURATION
-# ----------------------------
+# ----------------------------------------
+#   1.  PATHS CONFIGURATION AND SOURCES
+# ----------------------------------------
 
 export PATH=/usr/local/bin:$PATH
+
+source ~/.git-completion.bash
+source ~/.git-prompt.sh
 
 # ------------------------------------------
 #   2.  SET UP PROMPT AND TERMINAL COLORS
@@ -30,31 +33,41 @@ B_CYAN="\[\033[1;36m\]"
 B_WHITE="\[\033[1;37m\]"
 
 # EDIT
+GIT_PS1_SHOWDIRTYSTATE='true'
 export CLICOLOR='true'
+export LS_OPTIONS='--color=auto'
 export LSCOLORS=gafxcxdxbxegedabagacad
-export PS1="(\$(date +%H:%M)) $B_GREEN\u@:$B_BLUE\w $B_BLUE\$$B_WHITE "
+export PS1="$B_WHITE(\$(date +%H:%M)) "$B_GREEN"\u@:$B_BLUE\w"'$(
+    if [[ $(__git_ps1) =~ \*\)$ ]]
+    # a file has been modified but not added
+    then echo "'$B_YELLOW'"$(__git_ps1 " (%s)")
+    elif [[ $(__git_ps1) =~ \+\)$ ]]
+    # a file has been added, but not commited
+    then echo "'$B_RED'"$(__git_ps1 " (%s)")
+    # the state is clean, changes are commited
+    else echo "'$B_CYAN'"$(__git_ps1 " (%s)")
+    fi)'$B_BLUE" \$$B_WHITE "
 
 # ------------------
 #   3.  SHORTCUTS
 # ------------------
 
 # GLOBAL SHORTCUTS
-alias cd.='cd ..'   				# Go back 1 directory level (for fast typers)
-alias cd..='cd ../../'   			# Go back 2 directory levels
-alias cd...='cd ../../../'  		# Go back 3 directory levels
-alias edit='subl'               	# Edit files in sublime text
-alias sublime='subl'            	# Open files with sublime text
-alias h='cd ~'                  	# Go To Home Folder
-alias c='clear'                 	# Clear terminal display
+alias cd.='cd ..'   					# Go back 1 directory level (for fast typers)
+alias cd..='cd ../../'   				# Go back 2 directory levels
+alias cd...='cd ../../../'  			# Go back 3 directory levels
+alias edit='subl'               		# Edit files in sublime text
+alias sublime='subl'            		# Open files with sublime text
+alias h='cd ~'                  		# Go To Home Folder
+alias c='clear'                 		# Clear terminal display
+alias ll='ls -lah'						# More detailed list of files present on the current folder
+alias editbash='edit ~/.bash_profile'   # Edit bash_profile file
 
 # GIT SHORTCUTS
 alias gs='git status'				# Git Status
-alias gss='git status --short'		# Git Status (short way)
+alias gss='git status -s'			# Git Status (short way)
 alias ga='git add .'				# Git Add
 alias gc='git commit -m'			# Git Commit (you still need to write the commit message in front of the command) (ex: 'gc "commit message"')
 alias gp='git push origin'			# Git Push (you still need to write the branch in front of the command) (ex: 'gp development')
 alias gl='git log --decorate -2' 	# Git Log (you can still change the number of logs to show) (ex: 'gl -5')
 alias gls='git shortlog -2' 		# Git ShortLog (you can still change the number of logs to show) (ex: 'gls -5')
-
-# PROJECTS SHORTCUTS
-alias tc='cd ~/Documents/Projects/terminal_configuration' 		# Go To Project 'Terminal Configuration'

@@ -23,13 +23,13 @@ To do so, just follow these easy steps below.
 
 ### 1. Edit Terminal Preferences
 
-First, start by opening **Terminal**, go to Preferences and perform this changes:
+First, start by opening **Terminal**, go to Preferences and perform this changes.
 
-* In General, set Homebrew as your default profile on startup;
-* In Profiles, click on Homebrew and set him as default;
-* Set the font to 'Monaco 12 pt';
-* Set the color for 'Text' as white;
-* Check all boxes on 'Text' definitions.
+1. In General, set Homebrew as your default profile on startup;
+2. In Profiles, click on Homebrew and set him as default;
+3. Set the font to 'Monaco 12 pt';
+4. Set the color for 'Text' as white;
+5. Check all boxes on 'Text' definitions.
 
 ### 2. Create bash_profile File
 
@@ -70,8 +70,9 @@ Paste the following commands on the file.
 
 	# EDIT TERMINAL
 	export CLICOLOR='true'
+	export LS_OPTIONS='--color=auto'
 	export LSCOLORS=gafxcxdxbxegedabagacad
-	export PS1="$B_GREEN\u@:$B_BLUE\w $B_BLUE\$$B_WHITE"
+	export PS1="$B_WHITE(\$(date +%H:%M)) $B_GREEN\u@:$B_BLUE\w $B_BLUE\$$B_WHITE"
 
 Now when you start a new window, you will have a beautiful and intuitive Terminal.
 
@@ -93,10 +94,11 @@ Here are some of my shortcuts that I find really helpful. Just paste them on you
 	alias sublime='subl'            	# Open files with sublime text
 	alias h='cd ~'                  	# Go To Home Folder
 	alias c='clear'                 	# Clear terminal display
+	alias ll='ls -lah'					# More detailed list of files present on the current folder
 
 	# GIT SHORTCUTS
 	alias gs='git status'				# Git Status
-	alias gss='git status --short'		# Git Status (short way)
+	alias gss='git status -s'			# Git Status (short way)
 	alias ga='git add .'				# Git Add
 	alias gc='git commit -m'			# Git Commit (you still need to write the commit message in front of the command) (ex: 'gc "commit message"')
 	alias gp='git push origin'			# Git Push (you still need to write the branch in front of the command) (ex: 'gp development')
@@ -112,7 +114,39 @@ This way I don't take a long time writing the path to the folder, since I just n
 
 ### 5. Git Integration
 
+First, let's start by creating two files. Just run this two commands.
 
+	touch ~/.git-completion.bash
+	touch ~/.git-prompt.sh
+
+Then, open the files by running this commands.
+
+	edit ~/.git-completion.bash
+	edit ~/.git-prompt.sh
+
+With the files opened, go to this [link](https://github.com/git/git/blob/master/contrib/completion/git-completion.bash), and this [link](https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh) and copy paste their content to the files you just created.
+
+With the files populated, there are only two more things to do.
+
+Paste this three lines on your bash_profile
+
+	source ~/.git-completion.bash
+	source ~/.git-prompt.sh
+	
+	GIT_PS1_SHOWDIRTYSTATE='true'
+
+Finally, just change PS1 to this and when you start a new window, Terminal will be set.
+
+	export PS1="$B_WHITE(\$(date +%H:%M)) "$B_GREEN"\u@:$B_BLUE\w"'$(
+    if [[ $(__git_ps1) =~ \*\)$ ]]
+    # a file has been modified but not added
+    then echo "'$B_YELLOW'"$(__git_ps1 " (%s)")
+    elif [[ $(__git_ps1) =~ \+\)$ ]]
+    # a file has been added, but not commited
+    then echo "'$B_RED'"$(__git_ps1 " (%s)")
+    # the state is clean, changes are commited
+    else echo "'$B_CYAN'"$(__git_ps1 " (%s)")
+    fi)'$B_BLUE" \$$B_WHITE "
 
 ### 6. Other Configurations
 
@@ -158,7 +192,7 @@ Below, four different configurations of date and time are listed, in case you wa
 
 	(\$(date +%H:%M))
 
-To add them to your prompt just paste them into your PS1, like this:
+To add them to your prompt just paste them into your PS1, like this.
 
 	export PS1="(\$(date +%H:%M)) $B_GREEN\u@:$B_BLUE\w $B_BLUE\$$B_WHITE"
 
@@ -168,7 +202,7 @@ To add them to your prompt just paste them into your PS1, like this:
 
 If you want to change the colors of your Terminal, you need to change the LSCOLORS variable on your bash_profile file. 
 
-LSCOLORS sets colors for the following attributes:
+LSCOLORS sets colors for the following attributes.
 
 1. Directory
 2. Symbolic link
@@ -186,7 +220,7 @@ The configuration sets the background and foreground colors of this attributes i
 
 > gafxcxdxbxegedabagacad
 
-The list of colors is presented below:
+The list of colors is presented below.
 
 > a - black  
 > b - red  
@@ -212,7 +246,7 @@ The list of colors is presented below:
 
 If you want to change the prompt of your Terminal, you need to change the variable PS1 on your bash_profile file.
 
-Below, three different prompt presentations are presented, so that you can have an idea how they are created:
+Below, three different prompt presentations are presented, so that you can have an idea how they are created.
 
 > user@:~/Documents/Projects $
 	
@@ -226,13 +260,13 @@ Below, three different prompt presentations are presented, so that you can have 
 	
 	export PS1="[\h@\w: ] $"
 
-If you want to add color, simply add the color variable before the area in the prompt that you want to change. So, if you wanted everything to be default except your name, you could do it like this:
+If you want to add color, simply add the color variable before the area in the prompt that you want to change. So, if you wanted everything to be default except your name, you could do it like this.
 
 	export PS1="$B_GREEN\u$B_WHITE@:\w \$"
 
 This will set your name as green and everything else as white.
 
-**Note:** Before you start changing your prompt, there are a couple of special characters that you should know:
+**Note:** Before you start changing your prompt, there are a couple of special characters that you should know.
 
 > \h - the hostname up to the first `.'  
 > \H - the hostname  
