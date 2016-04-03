@@ -5,17 +5,9 @@ Having to work everyday with the Mac OS X Terminal and my desire of having every
 
 This is how my Terminal is currently configured.
 
----
-
-Image Home ![Terminal]()
-
-Image Git
-
-Image Folder and Ls
-
-Image Shortcuts
-
----
+<p align="center">
+  <img src="https://github.com/micaelpreis/terminal_configuration/blob/development/images/terminal.png"/>
+</p>
 
 In this tutorial I will show you how to set up your Terminal on Mac OS X just like mine. 
 
@@ -132,7 +124,7 @@ Paste this three lines on your bash_profile
 
 	source ~/.git-completion.bash
 	source ~/.git-prompt.sh
-	
+
 	GIT_PS1_SHOWDIRTYSTATE='true'
 
 Finally, just change PS1 to this and when you start a new window, Terminal will be set.
